@@ -22,5 +22,6 @@ Route::get('/admin', 'Admin\HomeController@index');
 Route::get('/admin/produtos', 'Admin\ProdutosController@index')->name('admin-produtos');
 Route::get('/admin/produtos/adicionar', 'Admin\ProdutosController@adicionar');
 
+Route::get('/admin/imagens', 'Admin\ImagensController@index')->name('admin-imagens');
 
 Route::get('/admin/pedidos', 'Admin\PedidosController@index')->name('admin-pedidos');

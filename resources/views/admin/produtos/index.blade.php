@@ -29,7 +29,7 @@
                           <td>Abajur tabajara something só amanhã</td>
                           <td>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</td>
                           <td>$ 1.234,56</td>
-                          <td><a href="">Imagens</a></td>
+                          <td><a href="{{url('admin/imagens')}}">Imagens</a></td>
                           <td>
                             <a href="{{ url('/admin/produtos/editar/1') }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                             <a href="{{ url('/admin/produtos/excluir/1') }}" class="btn btn-warning btn-sm"><i class="fa fa-trash" aria-hidden="true"></i></a>
