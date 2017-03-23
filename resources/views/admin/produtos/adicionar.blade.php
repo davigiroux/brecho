@@ -6,7 +6,7 @@
           <div class="col-md-12">
               <div class="panel panel-default">
                   <div class="panel-heading">
-                    <a href="{{ url('/admin/produtos') }}">Produtos</a> / Adicionar
+                    <a href="{{ route('admin-produtos') }}">Produtos</a> / Adicionar
                   </div>
 
                   <div class="panel-body">

@@ -6,12 +6,12 @@
         <div class="col-md-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                  <a href="{{ url('/admin/produtos') }}">Produtos</a> / Editar
+                  <a href="{{ route('admin-produtos') }}">Produtos</a> / Editar
                 </div>
 
                 <div class="panel-body">
                   <h3>Editando {{$produto->nome}}</h3>
-                  <form action="/admin/produtos/adicionar" method="PUT">
+                  <form action="/admin/produtos/update/{{$produto->id}}">
                     {!! csrf_field() !!}
                     <div class="form-group">
                       <label for="nome">Nome</label>
