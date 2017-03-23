@@ -10,7 +10,8 @@
                   </div>
 
                   <div class="panel-body">
-                    <form>
+                    <form action="/admin/produtos/adicionar" method="POST">
+                      {!! csrf_field() !!}
                       <div class="form-group">
                         <label for="nome">Nome</label>
                         <input type="text" class="form-control" name="nome" placeholder="Nome">
@@ -19,8 +20,16 @@
                         <label for="descricao">Descrição</label>
                         <input type="text" class="form-control" name="descricao" placeholder="Descrição">
                       </div>
+                      <div class="form-group">
+                        <label for="valor">Valor</label>
+                        <input type="text" class="form-control" name="valor" placeholder="Valor">
+                      </div>
+                      <div class="form-group">
+                        <label for="ordem">Ordem</label>
+                        <input type="text" class="form-control" name="ordem" placeholder="Ordem">
+                      </div>
 
-                      <button type="submit" class="btn btn-default">Submit</button>
+                      <button type="submit" class="btn btn-primary">Salvar</button>
                     </form>
                   </div>
               </div>

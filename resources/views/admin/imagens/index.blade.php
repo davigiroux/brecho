@@ -5,17 +5,20 @@
           <div class="col-md-12">
               <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h5><b>Produto:</b> Bregueneits</h5>
+                    <h5>Imagens</h5>
                   </div>
-
                   <div class="panel-body">
-                    <form action="/adicionar-imagem" method="POST">
-                        <div class="form-group">
-                            <label for="adicionarImagem">Adicionar imagem</label>
-                            <input type="file" id="adicionarImagem" name="adicionarImagem" multiple/>
-                        </div>
-                        <button type="submit" class="btn btn-default">Salvar</button>
-                    </form>
+                    <div class="jumbotron">
+                      <h2>Produto: <b>Bregeneits</b></h2>
+                      <form action="/adicionar-imagem" method="POST">
+                          <div class="form-group">
+                              <label for="adicionarImagem">Adicionar imagem</label>
+                              <input type="file" id="adicionarImagem" name="adicionarImagem" multiple/>
+                          </div>
+                          <hr>
+                          <button type="submit" class="btn btn-primary">Enviar arquivos</button>
+                      </form>
+                    </div>
                     <div class="row" style="margin: 20px;">
                       <h4>Imagens do produto:</h4>
                       <div class="col-md-2">

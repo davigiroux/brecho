@@ -21,6 +21,9 @@ Route::get('/admin', 'Admin\HomeController@index');
 
 Route::get('/admin/produtos', 'Admin\ProdutosController@index')->name('admin-produtos');
 Route::get('/admin/produtos/adicionar', 'Admin\ProdutosController@adicionar');
+Route::post('/admin/produtos/adicionar', 'Admin\ProdutosController@adicionarProduto');
+Route::get('/admin/produtos/excluir/{id}', 'Admin\ProdutosController@excluir');
+Route::get('/admin/produtos/editar/{id}', 'Admin\ProdutosController@editar')->name('admin-produtos-editar');
 
 Route::get('/admin/imagens', 'Admin\ImagensController@index')->name('admin-imagens');
 
