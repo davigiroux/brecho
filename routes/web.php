@@ -27,5 +27,6 @@ Route::get('/admin/produtos/editar/{id}', 'Admin\ProdutosController@editar')->na
 Route::get('/admin/produtos/update/{id}', 'Admin\ProdutosController@update');
 
 Route::get('/admin/imagens', 'Admin\ImagensController@index')->name('admin-imagens');
+Route::post('/admin/imagens/adicionar-imagem', 'Admin\ImagensController@adicionar');
 
 Route::get('/admin/pedidos', 'Admin\PedidosController@index')->name('admin-pedidos');

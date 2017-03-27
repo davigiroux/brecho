@@ -10,10 +10,11 @@
                   <div class="panel-body">
                     <div class="jumbotron">
                       <h2>Produto: <b>Bregeneits</b></h2>
-                      <form action="/adicionar-imagem" method="POST">
+                      <form action="/admin/imagens/adicionar-imagem" method="POST" enctype="multipart/form-data"> 
+                      {!! csrf_field() !!}
                           <div class="form-group">
-                              <label for="adicionarImagem">Adicionar imagem</label>
-                              <input type="file" id="adicionarImagem" name="adicionarImagem" multiple/>
+                              <label for="imagem">Adicionar imagem</label>
+                              <input type="file" id="imagem" name="imagem[]" multiple/>
                           </div>
                           <hr>
                           <button type="submit" class="btn btn-primary">Enviar arquivos</button>
