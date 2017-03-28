@@ -29,7 +29,7 @@
                           <td valign="middle">{{ $produto->nome }}</td>
                           <td valign="middle">{{ $produto->descricao}}</td>
                           <td valign="middle" style="min-width:100px;">R$ {{ $produto->valor }}</td>
-                          <td valign="middle"><a href="{{ url('/admin/imagens') }}">Imagens</a></td>
+                          <td valign="middle"><a href="{{ url('/admin/imagens/'.$produto->id) }}">Imagens</a></td>
                           <td>
                             <a href="{{ url('/admin/produtos/editar/'.$produto->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                           </td>

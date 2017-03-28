@@ -26,7 +26,7 @@ Route::get('/admin/produtos/excluir/{id}', 'Admin\ProdutosController@excluir');
 Route::get('/admin/produtos/editar/{id}', 'Admin\ProdutosController@editar')->name('admin-produtos-editar');
 Route::get('/admin/produtos/update/{id}', 'Admin\ProdutosController@update');
 
-Route::get('/admin/imagens', 'Admin\ImagensController@index')->name('admin-imagens');
+Route::get('/admin/imagens/{id}', 'Admin\ImagensController@index')->name('admin-imagens');
 Route::post('/admin/imagens/adicionar-imagem', 'Admin\ImagensController@adicionar');
 
 Route::get('/admin/pedidos', 'Admin\PedidosController@index')->name('admin-pedidos');

@@ -8,4 +8,8 @@ class Produto extends Model
 {
     //
     protected $table = 'produto';
+
+    public function imagens(){
+      return $this->hasMany('produtoimagem', 'idProduto', 'id');
+    }
 }

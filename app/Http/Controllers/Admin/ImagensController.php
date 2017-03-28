@@ -20,19 +20,33 @@ class ImagensController extends Controller
         $this->middleware('auth');
     }
 
-    
-    public function index()
+
+    public function index($id)
     {
-        return view('admin/imagens/index');
+        $produto = \App\Produto::find($id);
+        return view('admin/imagens/index', ['produto' => $produto]);
     }
 
     public function adicionar(Request $request)
     {
-        $imagens = Input::file('imagem');
-        foreach($imagens as $arquivo)
-        {
-            Storage::disk('local')->put($arquivo->getClientOriginalName(), file_get_contents($arquivo));
+        
+        if(Input::hasFile('imagem')){
+          $imagens = Input::file('imagem');
+          $idProduto = Input::get('idProduto');
+          foreach($imagens as $arquivo)
+          {
+              $produtoImagem = new \App\ProdutoImagem;
+              $produtoImagem->idProduto = $idProduto;
+              $nomeImagem = pathinfo($arquivo->getClientOriginalName(), PATHINFO_FILENAME);
+              $nomeImagem = date("Y-m-d",time())."-".str_slug($nomeImagem).".".$arquivo->getClientOriginalExtension();
+              Storage::disk('public')->put($nomeImagem, file_get_contents($arquivo));
+              $produtoImagem->imagem = Storage::url($nomeImagem);
+              $produtoImagem->save();
+              \Session::flash('flash_message', 'Imagem salva com sucesso!');
+          }
         }
-        return view('admin/imagens/index');
+        $id = Input::get('idProduto');
+        $produto = \App\Produto::find($id);
+        return view('admin/imagens/index', ['produto' => $produto]);
     }
 }
