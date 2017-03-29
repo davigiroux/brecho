@@ -23,11 +23,13 @@
                     </div>
                     <div class="row" style="margin: 20px;">
                       <h4>Imagens do produto:</h4>
+                      @foreach ($imgs as $img)
                       <div class="col-md-2">
                         <div class="thumbnail">
-                          <img src="{{Storage::url('')}}" alt="imagem">
+                          <img src="{{Storage::url($img->imagem)}}" alt="imagem">
                         </div>
-                      </div>
+                      </div>                     
+                      @endforeach
                     </div>
                   </div>
               </div>

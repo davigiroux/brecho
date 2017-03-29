@@ -24,7 +24,8 @@ class ImagensController extends Controller
     public function index($id)
     {
         $produto = \App\Produto::find($id);
-        return view('admin/imagens/index', ['produto' => $produto]);
+        $imgs = \App\Produto::find($produto->id)->imagens;
+        return view('admin/imagens/index', compact('imgs', 'produto'));
     }
 
     public function adicionar(Request $request)
@@ -40,13 +41,14 @@ class ImagensController extends Controller
               $nomeImagem = pathinfo($arquivo->getClientOriginalName(), PATHINFO_FILENAME);
               $nomeImagem = date("Y-m-d",time())."-".str_slug($nomeImagem).".".$arquivo->getClientOriginalExtension();
               Storage::disk('public')->put($nomeImagem, file_get_contents($arquivo));
-              $produtoImagem->imagem = Storage::url($nomeImagem);
+              $produtoImagem->imagem = $nomeImagem;
               $produtoImagem->save();
               \Session::flash('flash_message', 'Imagem salva com sucesso!');
           }
         }
         $id = Input::get('idProduto');
         $produto = \App\Produto::find($id);
-        return view('admin/imagens/index', ['produto' => $produto]);
+        $imgs = \App\Produto::find($produto->id)->imagens;
+        return view('admin/imagens/index', compact('imgs', 'produto'));
     }
 }
