@@ -2,10 +2,10 @@
 @section('content')
 <div class="container">
       <div class="row">
-          <div class="col-md-12">
+          <div class="col-md-12">      
               <div class="panel panel-default">
                   <div class="panel-heading">
-                    <h5>Imagens</h5>
+                    <a href="{{route('admin-produtos')}}">Produtos</a> / Imagens
                   </div>
                   <div class="panel-body">
                     <div class="jumbotron">
@@ -23,6 +23,9 @@
                     </div>
                     <div class="row" style="margin: 20px;">
                       <h4>Imagens do produto:</h4>
+                      @if($imgs->isEmpty())
+                        <i>Nenhuma imagem adicionada.</i>
+                      @else 
                       @foreach ($imgs as $img)
                       <div class="col-md-2">
                         <div class="thumbnail">
@@ -30,6 +33,7 @@
                         </div>
                       </div>                     
                       @endforeach
+                      @endif
                     </div>
                   </div>
               </div>

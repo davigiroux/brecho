@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'Brecho',
+    'name' => 'Brechó',
 
     /*
     |--------------------------------------------------------------------------
@@ -164,6 +164,12 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
+         * Custom.
+         */
+        Intervention\Image\ImageServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
+
+        /*
          * Package Service Providers...
          */
         Laravel\Tinker\TinkerServiceProvider::class,
@@ -225,6 +231,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Flash' => Laracasts\Flash\Flash::class,
 
     ],
 

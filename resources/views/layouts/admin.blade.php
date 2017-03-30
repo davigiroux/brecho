@@ -80,11 +80,27 @@
                 </div>
             </div>
         </nav>
-
+        <div class="container">
+            @if (Session::has('flash_message'))
+                <div class="alert alert-success {{ Session::has('flash_message_important') ? 'alert-imporant' : '' }}">
+                @if(Session::has('flash_message_important'))
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                @endif
+                    {{ session('flash_message') }}
+                </div>
+            @endif
+        </div>
+        <div class="container">
+            @include ('flash::message')
+        </div>
         @yield('content')
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+
+    <script>
+        $('div.alert').not('.alert-important').delay(3000).slideUp(300);
+    </script>
 </body>
 </html>

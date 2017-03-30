@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Input;
+use Intervention\Image\Facades\Image;
 use Illuminate\Contracts\Filesystem\Filesystem;
 
 class ImagensController extends Controller
@@ -40,10 +41,18 @@ class ImagensController extends Controller
               $produtoImagem->idProduto = $idProduto;
               $nomeImagem = pathinfo($arquivo->getClientOriginalName(), PATHINFO_FILENAME);
               $nomeImagem = date("Y-m-d",time())."-".str_slug($nomeImagem).".".$arquivo->getClientOriginalExtension();
-              Storage::disk('public')->put($nomeImagem, file_get_contents($arquivo));
-              $produtoImagem->imagem = $nomeImagem;
-              $produtoImagem->save();
-              \Session::flash('flash_message', 'Imagem salva com sucesso!');
+              if(Storage::disk('public')->exists($nomeImagem)){
+                flash()->warning('Imagem já adicionada!');
+              } else {             
+                $img = Image::make($arquivo);
+                $img->fit(800, 700, function ($constraint) {
+                    $constraint->aspectRatio();
+                });
+                Storage::disk('public')->put($nomeImagem, (string) $img->encode());
+                $produtoImagem->imagem = $nomeImagem;
+                $produtoImagem->save();
+                flash()->success('Imagem salva com sucesso!');
+              }
           }
         }
         $id = Input::get('idProduto');
