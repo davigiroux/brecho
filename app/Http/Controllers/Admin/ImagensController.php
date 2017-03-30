@@ -25,8 +25,22 @@ class ImagensController extends Controller
     public function index($id)
     {
         $produto = \App\Produto::find($id);
+        $imgs = \App\Produto::find($id)->imagens;
+        return view('admin/imagens/index', compact('produto', 'imgs'));
+    }
+
+    public function excluir($idImagem){
+        $img = \App\ProdutoImagem::find($idImagem);
+        Storage::disk('public')->delete($img->imagem);
+        $id = $img->idProduto;
+        flash($img->imagem.' excluída com sucesso.', 'warning')->important();
+        $img->delete();
+        $produto = \App\Produto::find($id);
         $imgs = \App\Produto::find($produto->id)->imagens;
-        return view('admin/imagens/index', compact('imgs', 'produto'));
+        return redirect()->route('admin-imagens', [
+            'id' => $id,
+            'imgs' => $imgs
+        ]);
     }
 
     public function adicionar(Request $request)
@@ -43,12 +57,13 @@ class ImagensController extends Controller
               $nomeImagem = date("Y-m-d",time())."-".str_slug($nomeImagem).".".$arquivo->getClientOriginalExtension();
               if(Storage::disk('public')->exists($nomeImagem)){
                 flash()->warning('Imagem já adicionada!');
-              } else {             
-                $img = Image::make($arquivo);
-                $img->fit(800, 700, function ($constraint) {
+              } else {
+                $resizedImg = Image::make($arquivo);
+                $resizedImg->fit(1000, 900, function ($constraint) {
                     $constraint->aspectRatio();
                 });
-                Storage::disk('public')->put($nomeImagem, (string) $img->encode());
+                Storage::disk('public')->put($nomeImagem,(string) $resizedImg->encode());  
+                Storage::disk('local')->put($nomeImagem, file_get_contents($arquivo));
                 $produtoImagem->imagem = $nomeImagem;
                 $produtoImagem->save();
                 flash()->success('Imagem salva com sucesso!');
@@ -58,6 +73,9 @@ class ImagensController extends Controller
         $id = Input::get('idProduto');
         $produto = \App\Produto::find($id);
         $imgs = \App\Produto::find($produto->id)->imagens;
-        return view('admin/imagens/index', compact('imgs', 'produto'));
+        return redirect()->route('admin-imagens', [
+            'produto' => $produto,
+            'imgs' => $imgs
+        ]);
     }
 }

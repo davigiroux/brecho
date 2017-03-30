@@ -29,8 +29,9 @@
                       @foreach ($imgs as $img)
                       <div class="col-md-2">
                         <div class="thumbnail">
-                          <img src="{{Storage::url($img->imagem)}}" alt="imagem">
+                          <img src="{{ Storage::url($img->imagem) }}" alt="imagem">
                         </div>
+                        <a href="{{ action('Admin\ImagensController@excluir', $img->id) }}" onclick="return confirm('Confirmar a excluão de {{$img->imagem}} ?')" class="btn btn-warning"><i class="fa fa-trash" style="width: 120px;" aria-hidden="true"></i></a>
                       </div>                     
                       @endforeach
                       @endif
