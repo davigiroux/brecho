@@ -37,6 +37,9 @@ class VitrineController extends Controller
         foreach($unique_imgs as $idImagem){
             array_push($imgs, \App\ProdutoImagem::find($idImagem));
         }
+        usort($imgs, function($a, $b){
+            return strcmp($a->produto->ordem, $b->produto->ordem);
+        });
         return view('front/vitrine', compact('imgs'));
     }
 

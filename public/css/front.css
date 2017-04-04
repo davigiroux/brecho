@@ -1,0 +1,38 @@
+body{
+  font-family: 'Roboto', sans-serif; 
+}
+
+.card-image.mdl-card {
+  width: 380px;
+  height: 320px;
+}
+.valor{
+    font-size: 20px;
+    margin-top: 10px;
+    color: black;
+    text-align: center;
+}
+.informacao-produto{
+  background-color: #e8e8e8;
+  width: 80%; 
+  height: auto;
+  margin: 0 auto;
+  margin-top: 30px;
+  padding: 15px;
+  border: 2px solid #7e838c;
+  border-radius: 10px;
+}
+
+.informacao-produto .titulo{
+  font-size: 35px;
+  color: black;
+  text-align: center;
+  margin: 30px;
+}
+
+.informacao-produto .content{
+  margin:30px;
+  padding: 10px;
+  font-size: 20px;
+}
+

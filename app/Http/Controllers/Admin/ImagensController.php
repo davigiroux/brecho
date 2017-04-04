@@ -32,12 +32,13 @@ class ImagensController extends Controller
     public function excluir($idImagem){
         $img = \App\ProdutoImagem::find($idImagem);
         Storage::disk('public')->delete($img->imagem);
+        Storage::disk('local')->delete($img->imagem);
         $id = $img->idProduto;
         flash($img->imagem.' excluída com sucesso.', 'warning')->important();
         $img->delete();
         $produto = \App\Produto::find($id);
         $imgs = \App\Produto::find($produto->id)->imagens;
-        return redirect()->route('vitrine', [
+        return redirect()->route('admin-imagens', [
             'id' => $id,
             'imgs' => $imgs
         ]);
@@ -59,7 +60,7 @@ class ImagensController extends Controller
                 flash()->warning('Imagem já adicionada!');
               } else {
                 $resizedImg = Image::make($arquivo);
-                $resizedImg->fit(1000, 900, function ($constraint) {
+                $resizedImg->resize(1000, 900, function ($constraint) {
                     $constraint->aspectRatio();
                 });
                 Storage::disk('public')->put($nomeImagem,(string) $resizedImg->encode());  
