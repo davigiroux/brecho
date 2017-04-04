@@ -37,7 +37,7 @@ class ImagensController extends Controller
         $img->delete();
         $produto = \App\Produto::find($id);
         $imgs = \App\Produto::find($produto->id)->imagens;
-        return redirect()->route('admin-imagens', [
+        return redirect()->route('vitrine', [
             'id' => $id,
             'imgs' => $imgs
         ]);

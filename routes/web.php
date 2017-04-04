@@ -31,3 +31,5 @@ Route::post('/admin/imagens/adicionar-imagem', 'Admin\ImagensController@adiciona
 Route::get('/admin/imagens/excluir/{img}', 'Admin\ImagensController@excluir');
 
 Route::get('/admin/pedidos', 'Admin\PedidosController@index')->name('admin-pedidos');
+
+Route::get('/vitrine', 'Front\VitrineController@index')->name('vitrine');
