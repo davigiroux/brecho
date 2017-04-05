@@ -60,7 +60,7 @@ class ImagensController extends Controller
                 flash()->warning('Imagem já adicionada!');
               } else {
                 $resizedImg = Image::make($arquivo);
-                $resizedImg->resize(1000, 900, function ($constraint) {
+                $resizedImg->resize(900, 800, function ($constraint) {
                     $constraint->aspectRatio();
                 });
                 Storage::disk('public')->put($nomeImagem,(string) $resizedImg->encode());  

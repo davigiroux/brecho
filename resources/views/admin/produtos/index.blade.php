@@ -16,7 +16,8 @@
                       <tr>
                         <th>#</th>
                         <th>Nome</th>
-                        <th>Descricao</th>
+                        <th>Descrição</th>
+                        <th>Ordem</th>
                         <th>Preço</th>
                         <th>Imagens</th>
                         <th></th>
@@ -28,6 +29,7 @@
                           <th scope="row">{{ $produto->id }}</th>
                           <td valign="middle">{{ $produto->nome }}</td>
                           <td valign="middle">{{ $produto->descricao}}</td>
+                          <td valign="middle">{{ $produto->ordem}}</td>
                           <td valign="middle" style="min-width:100px;">R$ {{ $produto->valor }}</td>
                           <td valign="middle"><a href="{{ url('/admin/imagens/'.$produto->id) }}">Imagens</a></td>
                           <td>

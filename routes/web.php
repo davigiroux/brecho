@@ -41,3 +41,6 @@ Route::get('/vitrine', 'Front\VitrineController@index')->name('vitrine');
 
 //Detalhes do produto
 Route::get('/detalhe/{id}', 'Front\DetalheController@index')->name('detalhe-produto');
+
+//Pedido
+Route::get('/pedido/{idProduto}/{idImagem}', 'Front\PedidoController@index')->name('pedido');
