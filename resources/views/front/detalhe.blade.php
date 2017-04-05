@@ -27,7 +27,7 @@
             
             <!-- Modal da imagem -->
             <div id="modal01" class="w3-modal w3-animate-opacity" onclick="this.style.display='none'">
-                <img class="w3-modal-content" id="img-content" style="width:80%; height:70%">
+                <img class="w3-modal-content" id="img-content" style="width:60%; height:80%">
             </div>
         </div>
         @endforeach

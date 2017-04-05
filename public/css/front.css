@@ -125,6 +125,11 @@ body {
     text-decoration: none;
 }
 
+.logo{
+    display: inline-block;
+    text-decoration: none;
+}
+
 .cool-link::after {
     content: '';
     display: block;

@@ -6,7 +6,7 @@
         @foreach($imgs as $img) 
         <div class="mdl-cell mdl-cell--4-col">
             <div class="card-image mdl-card mdl-shadow--2dp">
-                <div class="mdl-card__title" style="background: url({{ Storage::url($img->imagem) }}) center / cover; height: 210px;">
+                <div class="mdl-card__title" style="background: url({{ Storage::url($img->imagem) }}) center / cover; height: 300px;">
                 </div>
                 <div class="mdl-card__supporting-text">
                     <div class="valor" align="center">

@@ -52,7 +52,6 @@
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li><a href="{{ route('admin-produtos') }}">Produtos</a></li>
                             <li><a href="{{ route('admin-pedidos') }}">Pedidos</a></li>
@@ -101,6 +100,23 @@
 
     <script>
         $('div.alert').not('.alert-important').delay(3000).slideUp(300);
+        $(document).ready(function () {
+
+            (function ($) {
+
+                $('#filter').keyup(function () {
+
+                    var rex = new RegExp($(this).val(), 'i');
+                    $('.searchable tr').hide();
+                    $('.searchable tr').filter(function () {
+                        return rex.test($(this).text());
+                    }).show();
+
+                })
+
+            }(jQuery));
+
+        });
     </script>
 </body>
 </html>
